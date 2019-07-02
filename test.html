@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="test"></p>
+<script>
+  console.log("running ke's test");
+  let account = "TRCSolutions";
+  let user = "ActUser";
+  let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + account + "&LOGIN=" + user;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("test").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", sLoginRequest, true);
+  xhttp.send();
+</script>
+</body>
+</html>
