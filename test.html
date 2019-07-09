@@ -3,10 +3,28 @@
 <body>
 <p id="test"></p>
 <script>
-  console.log("running ke's test");
-  let account = "TRCSolutions";
-  let user = "ActUser";
-  let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + account + "&LOGIN=" + user;
+  console.log("running ke's test 2");
+  	let account = "TRCSolutions";
+  	let user = "ActUser";
+  	let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + account + "&LOGIN=" + user;
+
+  	let wkt = "LINESTRING (-95.9621226483684 36.066442984799,-95.9630934684588 36.0657434232634,-95.9630934684588 36.0641015951692,-95.9621226483684 36.0641015951692,-95.9621226483684 36.0611463046)";
+
+	let datacenter = "dc2";
+
+	let candy = "xINBukLfZ0pT82psV_ducIUBUUQIc69xPutYYA~~";
+
+	let url = "http://parcelstream.com/getquery.aspx?output=documentation/" + datacenter + "/GetQuery.aspx?";
+	            url += "&dataSource=" + wkt;
+	            url += "&maxRecords=1"; // ony take the first record. If you need to code for multiple records that works just need to return WKT seperated by a simi colon 
+	            //url += "&output=xml"; // for my example comment out and un comment json
+	            url += "&output=json";
+	            url += "&fields=GEOMETRY"; // only need the WKT
+	            //url += "&SS_CANDY=" + candy;
+	            url += "&showSchema=false"; // adds the schema to the result. In this case we do not need it
+	            url += "&_dmp_debug=true";  
+
+
   var xhttp = new XMLHttpRequest();
   xhttp.setRequestHeader("Origin", 'parcelstream.com');
   xhttp.onreadystatechange = function() {
@@ -14,7 +32,7 @@
       document.getElementById("test").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", sLoginRequest, true);
+  xhttp.open("GET", url, true);
   xhttp.send();
 </script>
 </body>
