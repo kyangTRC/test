@@ -17,10 +17,10 @@
 	let url = "http://parcelstream.com/getquery.aspx?output=documentation/" + datacenter + "/GetQuery.aspx?";
 	            url += "&dataSource=" + wkt;
 	            url += "&maxRecords=1"; // ony take the first record. If you need to code for multiple records that works just need to return WKT seperated by a simi colon 
-	            //url += "&output=xml"; // for my example comment out and un comment json
+	            url += "&output=xml"; // for my example comment out and un comment json
 	            url += "&output=json";
 	            url += "&fields=GEOMETRY"; // only need the WKT
-	            //url += "&SS_CANDY=" + candy;
+	            url += "&SS_CANDY=" + candy;
 	            url += "&showSchema=false"; // adds the schema to the result. In this case we do not need it
 	            url += "&_dmp_debug=true";  
 
