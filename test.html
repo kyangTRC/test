@@ -26,13 +26,14 @@
 
 
   var xhttp = new XMLHttpRequest();
-  xhttp.setRequestHeader("Origin", 'parcelstream.com');
+  
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("test").innerHTML = this.responseText;
     }
   };
   xhttp.open("GET", url, true);
+  xhttp.setRequestHeader("Origin", 'parcelstream.com');
   xhttp.send();
 </script>
 </body>
