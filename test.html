@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html>
 <body>
+<p id="demo"></p>
 <p id="test"></p>
 <script>
-  console.log("running ke's test 2");
-  	let account = "TRCSolutions";
-  	let user = "ActUser";
-  	let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + account + "&LOGIN=" + user;
+ 
+  	const account_user = ["TRCSolutions", "ActUser"];
+
+    const t_account_user = ["CRESALES", "TRCTEST"];
+
+  	let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + t_account_user[0] + "&LOGIN=" + t_account_user[1];
 
   	let wkt = "LINESTRING (-95.9621226483684 36.066442984799,-95.9630934684588 36.0657434232634,-95.9630934684588 36.0641015951692,-95.9621226483684 36.0641015951692,-95.9621226483684 36.0611463046)";
 
+    function sessionInit() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          parseSessionInit(this);
+        }
+      };
+      xhttp.open("GET", sLoginRequest, true);
+      xhttp.send();
+    }
+
+  sessionInit();
+  function parseSessionInit(xml) {
+    var xmlDoc = xml.responseXML;
+    document.getElementById("demo").innerHTML = xmlDoc;
+  }
+
 	let datacenter = "dc2";
 
-	let candy = "xINBukLfZ0pT82psV_ducIUBUUQIc69xPutYYA~~";
+	let candy = "d308e032-579c-45e6-9674-3e6dbbfed393-101400_570474633";
 
 	let url = "http://parcelstream.com/getquery.aspx?output=documentation/" + datacenter + "/GetQuery.aspx?";
 	            url += "&dataSource=" + wkt;
