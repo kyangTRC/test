@@ -23,8 +23,6 @@ function createCORSRequest(method, url) {
       return xhr;
 }
 
-
-
 /* STEP 1 -- FETCH SIK -- */
 const account_user = ["TRCSolutions", "ActUser"];
 
@@ -34,9 +32,9 @@ let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + t_acc
 
 let wkt = "LINESTRING (-95.9621226483684 36.066442984799,-95.9630934684588 36.0657434232634,-95.9630934684588 36.0641015951692,-95.9621226483684 36.0641015951692,-95.9621226483684 36.0611463046)";
 
-var xhr = createCORSRequest('GET', sLoginRequest);
-if (!xhr) {
-  throw new Error('CORS not supported');
+var xhrsLoginRequest = createCORSRequest('GET', sLoginRequest);
+if (!xhrsLoginRequest) {
+  throw new Error('CORS not supported sLoginRequest');
 }
 
 function sessionInit(url) {
@@ -60,9 +58,9 @@ let temp = http://dc1.parcelstream.com/_T197/InitSession.aspx?sik=_T197/b1034f3f
 */
 let demoUrl = `http://dc1.parcelstream.com/getQuery.aspx?datasource=SS.Prop.ParcelDetail/ParcelDetail&geo=POLYGON((-117.68585039585565%2033.62778144479256,-117.68514229267572%2033.62718290521123,-117.68509937733148%2033.62689703409304,-117.6852817675445%2033.62687916711664,-117.6861293455932%2033.627575976449805,-117.68585039585565%2033.62778144479256))&SS_Candy=xINBuuymZ0px5mpsdeJucELQxbrSV69xUYJUYA~~&fields=SITE_ADDRESS,SITE_CITY,SITE_STATE,SITE_ZIPCODE,COUNTY,APN,LOCATION_ID,_DMP_ID`;
 
-let xhr = createCORSRequest('GET', demoUrl);
-if (!xhr) {
-  throw new Error('CORS not supported');
+let xhrdemoUrl = createCORSRequest('GET', demoUrl);
+if (!xhrdemoUrl) {
+  throw new Error('CORS not supported demoUrl');
 }
 sessionInit(demoUrl);
 
