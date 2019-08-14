@@ -53,7 +53,7 @@ function sessionInit(url) {
 function parseDemo(xml) {
   var xmlDoc = xml.response;
   var x2js = new X2JS();
-   $("#demo").val(JSON.stringify(x2js.xml_str2json(xmlDoc)));
+  $("#demo").html(JSON.stringify(x2js.xml_str2json(xmlDoc)));
 }
 
 /*
