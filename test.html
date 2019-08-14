@@ -51,9 +51,7 @@ function sessionInit(url) {
 }
 
 function parseDemo(xml) {
-  var xmlDoc = xml.responseXML.document;
-  console.log(xml);
-  console.log(xmlDoc);
+  var xmlDoc = xml.response;
   var x2js = new X2JS();
    $("#demo").val(JSON.stringify(x2js.xml_str2json(xmlDoc)));
 }
