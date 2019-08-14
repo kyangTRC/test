@@ -21,11 +21,8 @@ function createCORSRequest(method, url) {
         xhr = null;
       }
       return xhr;
-    }
-    var xhr = createCORSRequest('GET', url);
-    if (!xhr) {
-      throw new Error('CORS not supported');
 }
+
 
 
 /* STEP 1 -- FETCH SIK -- */
@@ -36,6 +33,11 @@ const t_account_user = ["CRESALES", "TRCTEST"];
 let sLoginRequest = "http://parcelstream.com/admin/getSIK.aspx?ACCOUNT=" + t_account_user[0] + "&LOGIN=" + t_account_user[1];
 
 let wkt = "LINESTRING (-95.9621226483684 36.066442984799,-95.9630934684588 36.0657434232634,-95.9630934684588 36.0641015951692,-95.9621226483684 36.0641015951692,-95.9621226483684 36.0611463046)";
+
+var xhr = createCORSRequest('GET', sLoginRequest);
+if (!xhr) {
+  throw new Error('CORS not supported');
+}
 
 function sessionInit() {
   var xhttp = new XMLHttpRequest();
