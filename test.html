@@ -6,7 +6,7 @@
 <script>
 /* HELPER FUNCTION */
 function createCORSRequest(method, url) {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     if ("withCredentials" in xhr) {
       // Check if the XMLHttpRequest object has a "withCredentials" property.
       // "withCredentials" only exists on XMLHTTPRequest2 objects.
@@ -39,30 +39,32 @@ if (!xhr) {
   throw new Error('CORS not supported');
 }
 
-function sessionInit() {
-  var xhttp = new XMLHttpRequest();
+function sessionInit(url) {
+  let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       parseSessionInit(this);
     }
   };
-  xhttp.open("GET", sLoginRequest);
+  xhttp.open("GET", url);
   xhttp.send();
 }
 
-sessionInit();
 function parseSessionInit(xml) {
   var xmlDoc = xml.responseXML;
   document.getElementById("demo").innerHTML = xmlDoc;
 }
 
-  /*
-  let temp = http://dc1.parcelstream.com/_T197/InitSession.aspx?sik=_T197/b1034f3f-40a4-44fd-9b77-c11b0eb9d62c-101400_570474633&output=xml
-  */
-  /*
-  http://dc1.parcelstream.com/getQuery.aspx?datasource=SS.Prop.ParcelDetail/ParcelDetail&geo=POLYGON((-117.68585039585565%2033.62778144479256,-117.68514229267572%2033.62718290521123,-117.68509937733148%2033.62689703409304,-117.6852817675445%2033.62687916711664,-117.6861293455932%2033.627575976449805,-117.68585039585565%2033.62778144479256))&SS_Candy=xINBuuymZ0px5mpsdeJucELQxbrSV69xUYJUYA~~&fields=SITE_ADDRESS,SITE_CITY,SITE_STATE,SITE_ZIPCODE,COUNTY,APN,LOCATION_ID,_DMP_ID
-  */
+/*
+let temp = http://dc1.parcelstream.com/_T197/InitSession.aspx?sik=_T197/b1034f3f-40a4-44fd-9b77-c11b0eb9d62c-101400_570474633&output=xml
+*/
+let demoUrl = `http://dc1.parcelstream.com/getQuery.aspx?datasource=SS.Prop.ParcelDetail/ParcelDetail&geo=POLYGON((-117.68585039585565%2033.62778144479256,-117.68514229267572%2033.62718290521123,-117.68509937733148%2033.62689703409304,-117.6852817675445%2033.62687916711664,-117.6861293455932%2033.627575976449805,-117.68585039585565%2033.62778144479256))&SS_Candy=xINBuuymZ0px5mpsdeJucELQxbrSV69xUYJUYA~~&fields=SITE_ADDRESS,SITE_CITY,SITE_STATE,SITE_ZIPCODE,COUNTY,APN,LOCATION_ID,_DMP_ID`;
 
+let xhr = createCORSRequest('GET', demoUrl);
+if (!xhr) {
+  throw new Error('CORS not supported');
+}
+sessionInit(demoUrl);
 
 </script>
 </body>
