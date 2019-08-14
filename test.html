@@ -43,17 +43,17 @@ function sessionInit(url) {
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      parseSessionInit(this);
+      parseDemo(this);
     }
   };
   xhttp.open("GET", url);
   xhttp.send();
 }
 
-function parseSessionInit(xml) {
+function parseDemo(xml) {
   var xmlDoc = xml.responseXML;
+  console.log(xml);
   var x2js = new X2JS();
-
    $("#demo").val(JSON.stringify(x2js.xml_str2json(xmlDoc)));
 }
 
