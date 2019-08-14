@@ -3,6 +3,8 @@
 <body>
 <p id="demo"></p>
 <p id="test"></p>
+<script src="./jquery.min.js"></script>
+<script src="./xml2json.js"></script>
 <script>
 /* HELPER FUNCTION */
 function createCORSRequest(method, url) {
@@ -50,7 +52,9 @@ function sessionInit(url) {
 
 function parseSessionInit(xml) {
   var xmlDoc = xml.responseXML;
-  document.getElementById("demo").innerHTML = xmlDoc;
+  var x2js = new X2JS();
+
+   $("#demo").val(JSON.stringify(x2js.xml_str2json(xmlDoc)));
 }
 
 /*
